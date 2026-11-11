@@ -227,11 +227,6 @@ function bdSetup() {
     letterTitle: document.getElementById('birthdayLetterTitle'),
     letterBody: document.getElementById('birthdayLetterBody'),
     letterOutro: document.getElementById('birthdayLetterOutro'),
-    giftCaptions: [
-      document.getElementById('birthdayGiftPouch'),
-      document.getElementById('birthdayGiftTop'),
-      document.getElementById('birthdayGiftCosmetics'),
-    ],
     giftImages: [
       document.getElementById('birthdayGiftPouchImg'),
       document.getElementById('birthdayGiftTopImg'),
@@ -286,9 +281,6 @@ function bdApplyLanguage() {
   if (bdEl.letterTitle) bdEl.letterTitle.textContent = t.letterTitle;
   if (bdEl.letterBody) bdEl.letterBody.textContent = t.letterBody;
   if (bdEl.letterOutro) bdEl.letterOutro.textContent = t.letterOutro;
-  (bdEl.giftCaptions || []).forEach((caption, i) => {
-    if (caption) caption.textContent = t.giftNames[i];
-  });
   (bdEl.giftImages || []).forEach((img, i) => {
     if (img) img.alt = t.giftNames[i];
   });
