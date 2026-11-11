@@ -1,5 +1,12 @@
 Émilie's Birthday Garden — start here
 
+PLAY ONLINE
+https://francis-esc.github.io/emilies-birthday-game/
+
+The game is already hosted there for free on GitHub Pages. Send that link to Émilie —
+she only needs a browser. The steps below are a backup in case you ever want to
+move it somewhere else.
+
 This folder is a complete static website. It does not need Node, npm, or a build step.
 
 HOW TO PLAY
