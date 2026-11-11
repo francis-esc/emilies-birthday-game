@@ -20,6 +20,7 @@ let bugCount = 0;
 let tryToExit = false;
 let catchState;
 let bg, trees, fishes;
+const BIRTHDAY_BELLS = 100000;
 let coins, coinDisplay, coinCount = 0;
 let closeButton, purchaseButton;
 let menu, buildMenu, cameraMenu, catchMenu, customMenu, mapMenu, shopMenu;
@@ -832,11 +833,16 @@ function fetchMemory() {
   if (getItem('coinCount') !== null) {
     coinCount = getItem('coinCount');
   }
-  else {
-    if (playerName === "schellenberg" || playerName === "Schellenberg") {
-      coinCount = 100;
-      storeItem('coinCount', coinCount);
+
+  // One-time 100,000-bell birthday gift. The flag stops the wallet from being
+  // refilled after she spends any of it; deleting the save starts a new game,
+  // which grants the bells again.
+  if (getItem('birthdayBellsGranted') === null) {
+    if (coinCount < BIRTHDAY_BELLS) {
+      coinCount = BIRTHDAY_BELLS;
     }
+    storeItem('coinCount', coinCount);
+    storeItem('birthdayBellsGranted', true);
   }
 
   if (getItem('fishRodCount') !== null) {

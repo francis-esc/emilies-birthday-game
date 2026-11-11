@@ -61,7 +61,9 @@ const BD_TEXT = {
 
 プレゼントは3つ：`,
     letterOutro: `また一緒に、たくさん思い出をつくろうね。
-大好きだよ。`,
+
+Much love,
+DFP <3`,
     giftNames: ['ポーチ', '新しいトップス', 'コスメ'],
     close: '閉じる',
     digLabel: '掘る',
@@ -94,7 +96,9 @@ May the year ahead be full of gentle light and little joys.
 
 Your presents:`,
     letterOutro: `Let's make many more memories together.
-With all my love.`,
+
+Much love,
+DFP <3`,
     giftNames: ['A pouch', 'A new top', 'Some cosmetics'],
     close: 'Close',
     digLabel: 'Dig',
