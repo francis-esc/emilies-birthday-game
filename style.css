@@ -1,0 +1,322 @@
+@font-face {
+    font-family: digitaltech;
+    src: url(assets/background/digitalTech.ttf);
+  }
+  body {
+    /* set the background image to be a gif and position it in the center, taking up the full screen and not repeating */
+    background-image: url("assets/loading.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  
+  h1{
+      font-family: digitaltech, sans-serif;
+      text-align: center;
+      color: white;
+  }
+
+  /* ----------------------------------------------------------------------- */
+  /* Birthday garden quest UI                                                */
+  /* ----------------------------------------------------------------------- */
+
+  .birthday-hidden {
+    display: none !important;
+  }
+
+  .birthday-hud {
+    position: fixed;
+    top: 14px;
+    left: 14px;
+    z-index: 120;
+    width: min(360px, calc(100vw - 28px));
+    padding: 12px 14px 11px;
+    box-sizing: border-box;
+    border: 4px solid #6b4935;
+    border-radius: 18px;
+    background: rgba(255, 252, 235, 0.96);
+    box-shadow: 5px 5px 0 rgba(107, 73, 53, 0.35);
+    font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", "Nunito", sans-serif;
+    color: #4d3427;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .birthday-hud-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .birthday-title {
+    flex: 1;
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+  }
+
+  .birthday-lang {
+    flex: none;
+    pointer-events: auto;
+    cursor: pointer;
+    border: 3px solid #b9852c;
+    border-radius: 10px;
+    background: #ffd86b;
+    color: #4d3427;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 5px 9px;
+    box-shadow: 2px 2px 0 #b9852c;
+  }
+
+  .birthday-lang:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 #b9852c;
+  }
+
+  .birthday-progress {
+    margin-top: 7px;
+    font-size: 12px;
+    font-weight: 800;
+    color: #2f7d46;
+  }
+
+  .birthday-hint {
+    margin-top: 4px;
+    font-size: 11px;
+    line-height: 1.35;
+    color: #7a5b48;
+  }
+
+  .birthday-toast {
+    position: fixed;
+    left: 50%;
+    bottom: 34px;
+    z-index: 130;
+    max-width: min(620px, calc(100vw - 40px));
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border: 4px solid #6b4935;
+    border-radius: 16px;
+    background: rgba(255, 252, 235, 0.97);
+    box-shadow: 4px 4px 0 rgba(107, 73, 53, 0.3);
+    color: #4d3427;
+    font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", "Nunito", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.45;
+    text-align: center;
+    opacity: 0;
+    transform: translate(-50%, 12px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+  }
+
+  .birthday-toast.birthday-toast-show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  .birthday-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    background: rgba(38, 27, 22, 0.55);
+    backdrop-filter: blur(2px);
+  }
+
+  .birthday-modal.birthday-open {
+    display: flex;
+  }
+
+  .birthday-letter {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: min(560px, 100%);
+    max-height: min(92vh, 720px);
+    overflow: auto;
+    padding: 26px 32px 22px;
+    box-sizing: border-box;
+    border: 7px solid #6b4935;
+    border-radius: 26px;
+    background:
+      linear-gradient(rgba(255, 253, 242, 0.96), rgba(255, 253, 242, 0.96)),
+      repeating-linear-gradient(0deg, #f6ecd1 0 26px, #efe2c1 26px 27px);
+    box-shadow: 12px 12px 0 rgba(107, 73, 53, 0.34);
+    text-align: center;
+    color: #4d3427;
+    font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", "Nunito", sans-serif;
+    animation: birthdayLetterIn 0.25s ease-out;
+  }
+
+  @keyframes birthdayLetterIn {
+    from { opacity: 0; transform: translateY(14px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .birthday-letter-gift {
+    flex: 0 0 auto;
+    font-size: 34px;
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+
+  .birthday-letter h2 {
+    flex: 0 0 auto;
+    margin: 0 0 8px;
+    font-size: 23px;
+    line-height: 1.25;
+    color: #b23a48;
+    letter-spacing: 0.01em;
+  }
+
+  .birthday-letter p {
+    flex: 0 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    margin: 0 0 18px;
+    padding-right: 6px;
+    font-size: 15px;
+    line-height: 1.5;
+    white-space: pre-line;
+    text-align: left;
+    overscroll-behavior: contain;
+  }
+
+  #birthdayLetterBody {
+    margin-bottom: 10px;
+  }
+
+  #birthdayLetterOutro {
+    margin-bottom: 16px;
+  }
+
+  .birthday-gift-gallery {
+    flex: 0 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 9px;
+    margin: 0 0 10px;
+  }
+
+  .birthday-gift-card {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 5px 5px 4px;
+    box-sizing: border-box;
+    border: 3px solid #dcc08a;
+    border-radius: 12px;
+    background: #fffaf0;
+    box-shadow: 2px 2px 0 rgba(107, 73, 53, 0.12);
+  }
+
+  .birthday-gift-card img {
+    display: block;
+    width: 100%;
+    height: clamp(76px, 14vh, 112px);
+    object-fit: contain;
+    border-radius: 7px;
+    background: #f7efe0;
+  }
+
+  .birthday-gift-card figcaption {
+    margin-top: 4px;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1.25;
+    color: #7a5b48;
+  }
+
+  .birthday-letter-actions {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .birthday-close {
+    flex: 0 0 auto;
+    align-self: center;
+    cursor: pointer;
+    border: 4px solid #6b4935;
+    border-radius: 14px;
+    background: #ffd86b;
+    color: #4d3427;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 800;
+    padding: 8px 26px;
+    box-shadow: 4px 4px 0 rgba(107, 73, 53, 0.45);
+  }
+
+  .birthday-letter-lang {
+    flex: 0 0 auto;
+    cursor: pointer;
+    border: 3px solid #b9852c;
+    border-radius: 12px;
+    background: #fff4cf;
+    color: #4d3427;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 7px 14px;
+    box-shadow: 3px 3px 0 rgba(185, 133, 44, 0.45);
+  }
+
+  .birthday-letter-lang:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 rgba(185, 133, 44, 0.45);
+  }
+
+  .birthday-close:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 rgba(107, 73, 53, 0.45);
+  }
+
+  @media (max-width: 640px) {
+    .birthday-hud {
+      top: 8px;
+      left: 8px;
+      width: calc(100vw - 16px);
+      padding: 9px 11px;
+    }
+
+    .birthday-title {
+      font-size: 13px;
+    }
+
+    .birthday-letter {
+      padding: 24px 20px 20px;
+    }
+
+    .birthday-letter h2 {
+      font-size: 20px;
+    }
+
+    .birthday-letter p {
+      font-size: 14px;
+    }
+
+    .birthday-gift-gallery {
+      gap: 6px;
+    }
+
+    .birthday-gift-card {
+      padding: 4px 4px 3px;
+    }
+
+    .birthday-gift-card figcaption {
+      font-size: 10px;
+    }
+  }
+  
